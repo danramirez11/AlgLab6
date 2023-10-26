@@ -1,0 +1,16 @@
+.tile{
+    background-color: gray;
+    width: 15px;
+    height: 15px;
+}
+
+.rowDiv{
+    display: flex;
+    gap: 2px;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
