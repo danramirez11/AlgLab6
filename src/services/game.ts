@@ -49,6 +49,9 @@ export function startGame() {
             //<div id="0-0"></div>
             let tile: any = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
+            if (minesLocation.includes(tile.id)){
+                tile.style.backgroundColor = "lightgray";
+            }
             //tile.addEventListener("click", clickTile(tile));
             console.log(tile)
             row.push(tile);
@@ -62,6 +65,7 @@ export function startGame() {
 }
 
 export const flagTile = (tile: any) => {
+    event?.preventDefault();
     
         if (tile.innerText == "") {
             tile.innerText = "🚩";
@@ -74,11 +78,10 @@ export const flagTile = (tile: any) => {
 
 
 export function clickTile(tile: any) {
-    if (gameOver || tile.classList.contains("tile-clicked")) {
+    /*if (gameOver || tile.classList.contains("tile-clicked")) {
         return;
-    }
+    }*/
 
-    
 
     if (minesLocation.includes(tile.id)) {
         // alert("GAME OVER");
@@ -86,7 +89,6 @@ export function clickTile(tile: any) {
         revealMines();
         return;
     }
-
 
     let coords = tile.id.split("-"); // "0-0" -> ["0", "0"]
     let r = parseInt(coords[0]);

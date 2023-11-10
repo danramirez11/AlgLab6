@@ -40,10 +40,11 @@ export default class Game extends HTMLElement {
         board.forEach((row) => {
             const rowDiv = this.ownerDocument.createElement("div");
             rowDiv.classList.add("rowDiv")
-            row.forEach((tile: HTMLDivElement) => {
+            row.forEach((tile: any) => {
                 rowDiv.appendChild(tile);
                 tile.classList.add('tile');
                 tile.addEventListener("click", clickTile)
+				tile.addEventListener("contextmenu", flagTile(tile.id))
             })
             this.shadowRoot?.querySelector('section')?.appendChild(rowDiv);
         })
